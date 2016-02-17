@@ -1,11 +1,17 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # リクエスト数
 req=5000
 # Stubby4j の起動待ち時間
 time4boot=2
+# stubby4j の jar
+stubby4j=stubby4j-3.3.0.jar
 # 結果ファイル名
 result_tsv=perf.tsv
+
+if [ ! -f ./stubby4j-3.3.0.jar ]; then
+    curl -L -O http://search.maven.org/remotecontent?filepath=by/stub/stubby4j/3.3.0/stubby4j-3.3.0.jar
+fi
 
 # ファイルディスクリプタ数を変更
 ulimit -n 8192
